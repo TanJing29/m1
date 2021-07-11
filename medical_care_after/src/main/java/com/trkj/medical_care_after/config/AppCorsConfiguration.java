@@ -24,8 +24,8 @@ public class AppCorsConfiguration {
     private CorsConfiguration buildConfig() {
         log.debug("开始设置");
         CorsConfiguration appCorsConfiguration = new CorsConfiguration();
-        appCorsConfiguration.addAllowedOrigin("http://localhost:8085");
-        appCorsConfiguration.addAllowedOrigin("http://127.0.0.1:8085");
+        appCorsConfiguration.addAllowedOrigin("http://localhost:3000");
+        appCorsConfiguration.addAllowedOrigin("http://127.0.0.1:3000");
 //        appCorsConfiguration.addAllowedOrigin("http://localhost:8082");
 //        appCorsConfiguration.addAllowedOrigin("http://127.0.0.1:8082");
         appCorsConfiguration.addAllowedOrigin("http://localhost:8088");
