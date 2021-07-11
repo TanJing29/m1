@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trkj.medical_care_after.dao.DeliveryidDao">
+  <resultMap id="BaseResultMap" type="com.trkj.medical_care_after.entity.Deliveryid">
+    <id column="did" jdbcType="INTEGER" property="did" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="Con_Id" jdbcType="INTEGER" property="conId" />
+    <result column="said" jdbcType="INTEGER" property="said" />
+    <result column="delivery_order_no" jdbcType="VARCHAR" property="deliveryOrderNo" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="amount_receivable" jdbcType="DECIMAL" property="amountReceivable" />
+    <result column="actual_money" jdbcType="DECIMAL" property="actualMoney" />
+    <result column="owe_money" jdbcType="DECIMAL" property="oweMoney" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="ddate" jdbcType="DATE" property="ddate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    did, sid, Con_Id, said, delivery_order_no, price, quantity, amount_receivable, actual_money, 
+    owe_money, `state`, ddate, remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from deliveryid
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from deliveryid
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="did" keyProperty="did" parameterType="com.trkj.medical_care_after.entity.Deliveryid" useGeneratedKeys="true">
+    insert into deliveryid (sid, Con_Id, said, 
+      delivery_order_no, price, quantity, 
+      amount_receivable, actual_money, owe_money, 
+      `state`, ddate, remarks)
+    values (#{sid,jdbcType=INTEGER}, #{conId,jdbcType=INTEGER}, #{said,jdbcType=INTEGER}, 
+      #{deliveryOrderNo,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{quantity,jdbcType=INTEGER}, 
+      #{amountReceivable,jdbcType=DECIMAL}, #{actualMoney,jdbcType=DECIMAL}, #{oweMoney,jdbcType=DECIMAL}, 
+      #{state,jdbcType=INTEGER}, #{ddate,jdbcType=DATE}, #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="did" keyProperty="did" parameterType="com.trkj.medical_care_after.entity.Deliveryid" useGeneratedKeys="true">
+    insert into deliveryid
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="conId != null">
+        Con_Id,
+      </if>
+      <if test="said != null">
+        said,
+      </if>
+      <if test="deliveryOrderNo != null">
+        delivery_order_no,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="amountReceivable != null">
+        amount_receivable,
+      </if>
+      <if test="actualMoney != null">
+        actual_money,
+      </if>
+      <if test="oweMoney != null">
+        owe_money,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="ddate != null">
+        ddate,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="conId != null">
+        #{conId,jdbcType=INTEGER},
+      </if>
+      <if test="said != null">
+        #{said,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryOrderNo != null">
+        #{deliveryOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="amountReceivable != null">
+        #{amountReceivable,jdbcType=DECIMAL},
+      </if>
+      <if test="actualMoney != null">
+        #{actualMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="oweMoney != null">
+        #{oweMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="ddate != null">
+        #{ddate,jdbcType=DATE},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trkj.medical_care_after.entity.Deliveryid">
+    update deliveryid
+    <set>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="conId != null">
+        Con_Id = #{conId,jdbcType=INTEGER},
+      </if>
+      <if test="said != null">
+        said = #{said,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryOrderNo != null">
+        delivery_order_no = #{deliveryOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="amountReceivable != null">
+        amount_receivable = #{amountReceivable,jdbcType=DECIMAL},
+      </if>
+      <if test="actualMoney != null">
+        actual_money = #{actualMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="oweMoney != null">
+        owe_money = #{oweMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="ddate != null">
+        ddate = #{ddate,jdbcType=DATE},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trkj.medical_care_after.entity.Deliveryid">
+    update deliveryid
+    set sid = #{sid,jdbcType=INTEGER},
+      Con_Id = #{conId,jdbcType=INTEGER},
+      said = #{said,jdbcType=INTEGER},
+      delivery_order_no = #{deliveryOrderNo,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      quantity = #{quantity,jdbcType=INTEGER},
+      amount_receivable = #{amountReceivable,jdbcType=DECIMAL},
+      actual_money = #{actualMoney,jdbcType=DECIMAL},
+      owe_money = #{oweMoney,jdbcType=DECIMAL},
+      `state` = #{state,jdbcType=INTEGER},
+      ddate = #{ddate,jdbcType=DATE},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+</mapper>

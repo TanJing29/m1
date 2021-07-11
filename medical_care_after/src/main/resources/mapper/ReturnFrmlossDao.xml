@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trkj.medical_care_after.dao.ReturnFrmlossDao">
+  <resultMap id="BaseResultMap" type="com.trkj.medical_care_after.entity.ReturnFrmloss">
+    <id column="rfid" jdbcType="INTEGER" property="rfid" />
+    <result column="Con_Id" jdbcType="INTEGER" property="conId" />
+    <result column="did" jdbcType="INTEGER" property="did" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="amount_money" jdbcType="DECIMAL" property="amountMoney" />
+    <result column="rf_reason" jdbcType="VARCHAR" property="rfReason" />
+    <result column="rf_date" jdbcType="DATE" property="rfDate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rfid, Con_Id, did, sid, quantity, price, amount_money, rf_reason, rf_date, remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from return_frmloss
+    where rfid = #{rfid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from return_frmloss
+    where rfid = #{rfid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="rfid" keyProperty="rfid" parameterType="com.trkj.medical_care_after.entity.ReturnFrmloss" useGeneratedKeys="true">
+    insert into return_frmloss (Con_Id, did, sid, 
+      quantity, price, amount_money, 
+      rf_reason, rf_date, remarks
+      )
+    values (#{conId,jdbcType=INTEGER}, #{did,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, 
+      #{quantity,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{amountMoney,jdbcType=DECIMAL}, 
+      #{rfReason,jdbcType=VARCHAR}, #{rfDate,jdbcType=DATE}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="rfid" keyProperty="rfid" parameterType="com.trkj.medical_care_after.entity.ReturnFrmloss" useGeneratedKeys="true">
+    insert into return_frmloss
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conId != null">
+        Con_Id,
+      </if>
+      <if test="did != null">
+        did,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="amountMoney != null">
+        amount_money,
+      </if>
+      <if test="rfReason != null">
+        rf_reason,
+      </if>
+      <if test="rfDate != null">
+        rf_date,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conId != null">
+        #{conId,jdbcType=INTEGER},
+      </if>
+      <if test="did != null">
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="amountMoney != null">
+        #{amountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="rfReason != null">
+        #{rfReason,jdbcType=VARCHAR},
+      </if>
+      <if test="rfDate != null">
+        #{rfDate,jdbcType=DATE},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trkj.medical_care_after.entity.ReturnFrmloss">
+    update return_frmloss
+    <set>
+      <if test="conId != null">
+        Con_Id = #{conId,jdbcType=INTEGER},
+      </if>
+      <if test="did != null">
+        did = #{did,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="amountMoney != null">
+        amount_money = #{amountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="rfReason != null">
+        rf_reason = #{rfReason,jdbcType=VARCHAR},
+      </if>
+      <if test="rfDate != null">
+        rf_date = #{rfDate,jdbcType=DATE},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rfid = #{rfid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trkj.medical_care_after.entity.ReturnFrmloss">
+    update return_frmloss
+    set Con_Id = #{conId,jdbcType=INTEGER},
+      did = #{did,jdbcType=INTEGER},
+      sid = #{sid,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      amount_money = #{amountMoney,jdbcType=DECIMAL},
+      rf_reason = #{rfReason,jdbcType=VARCHAR},
+      rf_date = #{rfDate,jdbcType=DATE},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where rfid = #{rfid,jdbcType=INTEGER}
+  </update>
+</mapper>
