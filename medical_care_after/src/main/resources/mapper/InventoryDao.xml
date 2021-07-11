@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trkj.medical_care_after.dao.InventoryDao">
+  <resultMap id="BaseResultMap" type="com.trkj.medical_care_after.entity.Inventory">
+    <id column="in_id" jdbcType="INTEGER" property="inId" />
+    <result column="in_supplier" jdbcType="VARCHAR" property="inSupplier" />
+    <result column="in_upperlimit" jdbcType="INTEGER" property="inUpperlimit" />
+    <result column="in_lowerlimit" jdbcType="INTEGER" property="inLowerlimit" />
+    <result column="in_describe" jdbcType="VARCHAR" property="inDescribe" />
+    <result column="in_original" jdbcType="INTEGER" property="inOriginal" />
+    <result column="in_stock" jdbcType="INTEGER" property="inStock" />
+    <result column="in_reportedloss" jdbcType="INTEGER" property="inReportedloss" />
+    <result column="in_sales" jdbcType="INTEGER" property="inSales" />
+    <result column="in_receipt_return" jdbcType="INTEGER" property="inReceiptReturn" />
+    <result column="in_quantity" jdbcType="INTEGER" property="inQuantity" />
+    <result column="in_state" jdbcType="CHAR" property="inState" />
+    <result column="in_proid" jdbcType="INTEGER" property="inProid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    in_id, in_supplier, in_upperlimit, in_lowerlimit, in_describe, in_original, in_stock, 
+    in_reportedloss, in_sales, in_receipt_return, in_quantity, in_state, in_proid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from inventory
+    where in_id = #{inId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from inventory
+    where in_id = #{inId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="in_id" keyProperty="inId" parameterType="com.trkj.medical_care_after.entity.Inventory" useGeneratedKeys="true">
+    insert into inventory (in_supplier, in_upperlimit, in_lowerlimit, 
+      in_describe, in_original, in_stock, 
+      in_reportedloss, in_sales, in_receipt_return, 
+      in_quantity, in_state, in_proid
+      )
+    values (#{inSupplier,jdbcType=VARCHAR}, #{inUpperlimit,jdbcType=INTEGER}, #{inLowerlimit,jdbcType=INTEGER}, 
+      #{inDescribe,jdbcType=VARCHAR}, #{inOriginal,jdbcType=INTEGER}, #{inStock,jdbcType=INTEGER}, 
+      #{inReportedloss,jdbcType=INTEGER}, #{inSales,jdbcType=INTEGER}, #{inReceiptReturn,jdbcType=INTEGER}, 
+      #{inQuantity,jdbcType=INTEGER}, #{inState,jdbcType=CHAR}, #{inProid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="in_id" keyProperty="inId" parameterType="com.trkj.medical_care_after.entity.Inventory" useGeneratedKeys="true">
+    insert into inventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="inSupplier != null">
+        in_supplier,
+      </if>
+      <if test="inUpperlimit != null">
+        in_upperlimit,
+      </if>
+      <if test="inLowerlimit != null">
+        in_lowerlimit,
+      </if>
+      <if test="inDescribe != null">
+        in_describe,
+      </if>
+      <if test="inOriginal != null">
+        in_original,
+      </if>
+      <if test="inStock != null">
+        in_stock,
+      </if>
+      <if test="inReportedloss != null">
+        in_reportedloss,
+      </if>
+      <if test="inSales != null">
+        in_sales,
+      </if>
+      <if test="inReceiptReturn != null">
+        in_receipt_return,
+      </if>
+      <if test="inQuantity != null">
+        in_quantity,
+      </if>
+      <if test="inState != null">
+        in_state,
+      </if>
+      <if test="inProid != null">
+        in_proid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="inSupplier != null">
+        #{inSupplier,jdbcType=VARCHAR},
+      </if>
+      <if test="inUpperlimit != null">
+        #{inUpperlimit,jdbcType=INTEGER},
+      </if>
+      <if test="inLowerlimit != null">
+        #{inLowerlimit,jdbcType=INTEGER},
+      </if>
+      <if test="inDescribe != null">
+        #{inDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="inOriginal != null">
+        #{inOriginal,jdbcType=INTEGER},
+      </if>
+      <if test="inStock != null">
+        #{inStock,jdbcType=INTEGER},
+      </if>
+      <if test="inReportedloss != null">
+        #{inReportedloss,jdbcType=INTEGER},
+      </if>
+      <if test="inSales != null">
+        #{inSales,jdbcType=INTEGER},
+      </if>
+      <if test="inReceiptReturn != null">
+        #{inReceiptReturn,jdbcType=INTEGER},
+      </if>
+      <if test="inQuantity != null">
+        #{inQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="inState != null">
+        #{inState,jdbcType=CHAR},
+      </if>
+      <if test="inProid != null">
+        #{inProid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trkj.medical_care_after.entity.Inventory">
+    update inventory
+    <set>
+      <if test="inSupplier != null">
+        in_supplier = #{inSupplier,jdbcType=VARCHAR},
+      </if>
+      <if test="inUpperlimit != null">
+        in_upperlimit = #{inUpperlimit,jdbcType=INTEGER},
+      </if>
+      <if test="inLowerlimit != null">
+        in_lowerlimit = #{inLowerlimit,jdbcType=INTEGER},
+      </if>
+      <if test="inDescribe != null">
+        in_describe = #{inDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="inOriginal != null">
+        in_original = #{inOriginal,jdbcType=INTEGER},
+      </if>
+      <if test="inStock != null">
+        in_stock = #{inStock,jdbcType=INTEGER},
+      </if>
+      <if test="inReportedloss != null">
+        in_reportedloss = #{inReportedloss,jdbcType=INTEGER},
+      </if>
+      <if test="inSales != null">
+        in_sales = #{inSales,jdbcType=INTEGER},
+      </if>
+      <if test="inReceiptReturn != null">
+        in_receipt_return = #{inReceiptReturn,jdbcType=INTEGER},
+      </if>
+      <if test="inQuantity != null">
+        in_quantity = #{inQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="inState != null">
+        in_state = #{inState,jdbcType=CHAR},
+      </if>
+      <if test="inProid != null">
+        in_proid = #{inProid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where in_id = #{inId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trkj.medical_care_after.entity.Inventory">
+    update inventory
+    set in_supplier = #{inSupplier,jdbcType=VARCHAR},
+      in_upperlimit = #{inUpperlimit,jdbcType=INTEGER},
+      in_lowerlimit = #{inLowerlimit,jdbcType=INTEGER},
+      in_describe = #{inDescribe,jdbcType=VARCHAR},
+      in_original = #{inOriginal,jdbcType=INTEGER},
+      in_stock = #{inStock,jdbcType=INTEGER},
+      in_reportedloss = #{inReportedloss,jdbcType=INTEGER},
+      in_sales = #{inSales,jdbcType=INTEGER},
+      in_receipt_return = #{inReceiptReturn,jdbcType=INTEGER},
+      in_quantity = #{inQuantity,jdbcType=INTEGER},
+      in_state = #{inState,jdbcType=CHAR},
+      in_proid = #{inProid,jdbcType=INTEGER}
+    where in_id = #{inId,jdbcType=INTEGER}
+  </update>
+</mapper>
