@@ -2,8 +2,8 @@ package com.trkj.medical_care_after.service;
 
 import com.trkj.medical_care_after.dao.ConnectionDao;
 import com.trkj.medical_care_after.entity.Connection;
+import com.trkj.medical_care_after.util.BeanCopyUtil;
 import com.trkj.medical_care_after.vo.ConnectionVo;
-import com.trkj.tsm.util.BeanCopyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
