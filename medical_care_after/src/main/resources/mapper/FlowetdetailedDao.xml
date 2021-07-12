@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trkj.medical_care_after.dao.FlowetdetailedDao">
+  <resultMap id="BaseResultMap" type="com.trkj.medical_care_after.vo.FlowetdetailedVo">
+    <id column="FId" jdbcType="INTEGER" property="fid" />
+    <result column="flowname" jdbcType="VARCHAR" property="flowname" />
+    <result column="applyfor" jdbcType="VARCHAR" property="applyfor" />
+    <result column="beforpanel" jdbcType="VARCHAR" property="beforpanel" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="initiatetime" jdbcType="TIMESTAMP" property="initiatetime" />
+    <result column="finishtime" jdbcType="TIMESTAMP" property="finishtime" />
+    <result column="proc_data" jdbcType="VARCHAR" property="procData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    FId, flowname, applyfor, beforpanel, `status`, initiatetime, finishtime, proc_data
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from flowetdetailed
+    where FId = #{fid,jdbcType=INTEGER}
+  </select>
+  <select id="selAllFlowet" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from flowetdetailed
+  </select>
+  <!--查询状态为1的审批中-->
+  <select id="selstatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from flowetdetailed
+    where status=1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from flowetdetailed
+    where FId = #{fid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="FId" keyProperty="fid" parameterType="com.trkj.medical_care_after.vo.FlowetdetailedVo" useGeneratedKeys="true">
+    insert into flowetdetailed (flowname, applyfor, beforpanel, 
+      `status`, initiatetime, finishtime, 
+      proc_data)
+    values (#{flowname,jdbcType=VARCHAR}, #{applyfor,jdbcType=VARCHAR}, #{beforpanel,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{initiatetime,jdbcType=TIMESTAMP}, #{finishtime,jdbcType=TIMESTAMP}, 
+      #{procData,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="FId" keyProperty="fid" parameterType="com.trkj.medical_care_after.vo.FlowetdetailedVo" useGeneratedKeys="true">
+    insert into flowetdetailed
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="flowname != null">
+        flowname,
+      </if>
+      <if test="applyfor != null">
+        applyfor,
+      </if>
+      <if test="beforpanel != null">
+        beforpanel,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="initiatetime != null">
+        initiatetime,
+      </if>
+      <if test="finishtime != null">
+        finishtime,
+      </if>
+      <if test="procData != null">
+        proc_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="flowname != null">
+        #{flowname,jdbcType=VARCHAR},
+      </if>
+      <if test="applyfor != null">
+        #{applyfor,jdbcType=VARCHAR},
+      </if>
+      <if test="beforpanel != null">
+        #{beforpanel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="initiatetime != null">
+        #{initiatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishtime != null">
+        #{finishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procData != null">
+        #{procData,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trkj.medical_care_after.vo.FlowetdetailedVo">
+    update flowetdetailed
+    <set>
+      <if test="flowname != null">
+        flowname = #{flowname,jdbcType=VARCHAR},
+      </if>
+      <if test="applyfor != null">
+        applyfor = #{applyfor,jdbcType=VARCHAR},
+      </if>
+      <if test="beforpanel != null">
+        beforpanel = #{beforpanel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="initiatetime != null">
+        initiatetime = #{initiatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishtime != null">
+        finishtime = #{finishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procData != null">
+        proc_data = #{procData,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FId = #{fid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trkj.medical_care_after.vo.FlowetdetailedVo">
+    update flowetdetailed
+    set flowname = #{flowname,jdbcType=VARCHAR},
+      applyfor = #{applyfor,jdbcType=VARCHAR},
+      beforpanel = #{beforpanel,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      initiatetime = #{initiatetime,jdbcType=TIMESTAMP},
+      finishtime = #{finishtime,jdbcType=TIMESTAMP},
+      proc_data = #{procData,jdbcType=VARCHAR}
+    where FId = #{fid,jdbcType=INTEGER}
+  </update>
+</mapper>

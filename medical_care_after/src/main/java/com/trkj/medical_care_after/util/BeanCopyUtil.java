@@ -1,6 +1,5 @@
 package com.trkj.medical_care_after.util;
 
-import com.trkj.tsm.util.BeanCopyUtilCallBack;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
