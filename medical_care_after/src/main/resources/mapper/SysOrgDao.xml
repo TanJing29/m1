@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trkj.securityboot.dao.SysOrgDao">
+  <resultMap id="BaseResultMap" type="com.trkj.securityboot.entity.SysOrg">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="org_pid" jdbcType="INTEGER" property="orgPid" />
+    <result column="org_pids" jdbcType="VARCHAR" property="orgPids" />
+    <result column="is_leaf" jdbcType="TINYINT" property="isLeaf" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="sort" jdbcType="TINYINT" property="sort" />
+    <result column="level" jdbcType="TINYINT" property="level" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, org_pid, org_pids, is_leaf, org_name, address, phone, email, sort, `level`, `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_org
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_org
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.trkj.securityboot.entity.SysOrg" useGeneratedKeys="true">
+    insert into sys_org (org_pid, org_pids, is_leaf, 
+      org_name, address, phone, 
+      email, sort, `level`, 
+      `status`)
+    values (#{orgPid,jdbcType=INTEGER}, #{orgPids,jdbcType=VARCHAR}, #{isLeaf,jdbcType=TINYINT}, 
+      #{orgName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{sort,jdbcType=TINYINT}, #{level,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.trkj.securityboot.entity.SysOrg" useGeneratedKeys="true">
+    insert into sys_org
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgPid != null">
+        org_pid,
+      </if>
+      <if test="orgPids != null">
+        org_pids,
+      </if>
+      <if test="isLeaf != null">
+        is_leaf,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgPid != null">
+        #{orgPid,jdbcType=INTEGER},
+      </if>
+      <if test="orgPids != null">
+        #{orgPids,jdbcType=VARCHAR},
+      </if>
+      <if test="isLeaf != null">
+        #{isLeaf,jdbcType=TINYINT},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trkj.securityboot.entity.SysOrg">
+    update sys_org
+    <set>
+      <if test="orgPid != null">
+        org_pid = #{orgPid,jdbcType=INTEGER},
+      </if>
+      <if test="orgPids != null">
+        org_pids = #{orgPids,jdbcType=VARCHAR},
+      </if>
+      <if test="isLeaf != null">
+        is_leaf = #{isLeaf,jdbcType=TINYINT},
+      </if>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trkj.securityboot.entity.SysOrg">
+    update sys_org
+    set org_pid = #{orgPid,jdbcType=INTEGER},
+      org_pids = #{orgPids,jdbcType=VARCHAR},
+      is_leaf = #{isLeaf,jdbcType=TINYINT},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=TINYINT},
+      `level` = #{level,jdbcType=TINYINT},
+      `status` = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
